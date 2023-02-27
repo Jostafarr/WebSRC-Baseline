@@ -32,7 +32,7 @@ def test_label(data, domain, website):
             ele = page.find(attrs={'tid':element_id})
             assert ele is not None
             try:
-                found_answer = get_node_text(ele)[answer_start:answer_start+len(answer)]
+                found_answer = get_node_text(ele)[int(answer_start):int(answer_start)+len(answer)]
             except TypeError:
                 print(line)
                 raise

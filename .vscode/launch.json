@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: create model checkpoints",
+            "type": "python",
+            "request": "launch",
+            "program": "create_model_checkpoints.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "src"
+        },
+        {
+            "name": "Python: dataset_generation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/dataset_generation.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--root_dir=data",
+                "--version=websrc1.0"
+            ],
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Module",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "--domain=jobs",
+                "--data=data/jobs/10",
+                "--website=10"
+            ],
+            "justMyCode": false
+        }
+    ]
+}

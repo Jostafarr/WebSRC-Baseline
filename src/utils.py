@@ -10,7 +10,7 @@ from os import path as osp
 from tqdm import tqdm
 import bs4
 from bs4 import BeautifulSoup as bs
-from transformers.tokenization_bert import BasicTokenizer, whitespace_tokenize
+from transformers import BasicTokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -379,11 +379,11 @@ def read_wrc_examples(input_file, root_dir, is_training, tokenizer, method, simp
                         # guaranteed to be preserved.
                         actual_text = " ".join([w for w in doc_tokens[start_position:(end_position + 1)]
                                                 if w[0] != '<' or w[-1] != '>'])
-                        cleaned_answer_text = " ".join(whitespace_tokenize(orig_answer_text))
-                        if actual_text.find(cleaned_answer_text) == -1:
-                            logger.warning("Could not find answer of question %s: '%s' vs. '%s'",
-                                           qa['id'], actual_text, cleaned_answer_text)
-                            continue
+                        # cleaned_answer_text = " ".join(whitespace_tokenize(orig_answer_text))
+                        # if actual_text.find(cleaned_answer_text) == -1:
+                        #     logger.warning("Could not find answer of question %s: '%s' vs. '%s'",
+                        #                    qa['id'], actual_text, cleaned_answer_text)
+                            #continue
 
                     example = SRCExample(
                         doc_tokens=doc_tokens,

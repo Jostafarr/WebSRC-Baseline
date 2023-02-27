@@ -7,7 +7,7 @@ import os
 from os.path import join as pj
 
 def test_id(data, domain, website):
-    dataset = pd.read_csv(pj(data, "dataset.csv"))
+    dataset = pd.read_csv(pj(data, "dataset.csv"), sep=';')
     domain_short = domain[0:2]
     """
     test the format of id

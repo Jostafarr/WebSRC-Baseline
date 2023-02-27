@@ -12,3 +12,4 @@ __pycache__/*
 /data/cached
 !/data/dataset_split.json
 .DS_Store
+data1/*

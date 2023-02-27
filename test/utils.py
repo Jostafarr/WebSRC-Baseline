@@ -17,7 +17,7 @@ def readJson(path):
         return json.loads(f.read())
 
 def read_dataset(path):
-    dataset = pd.read_csv(path, dtype={"pageid":str, "answer":str})
+    dataset = pd.read_csv(path, dtype={"pageid":str, "answer":str}, sep=';')
     return dataset
 
 def get_node_text(node):

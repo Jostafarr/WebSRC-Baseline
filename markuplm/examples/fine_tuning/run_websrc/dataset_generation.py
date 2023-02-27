@@ -30,7 +30,7 @@ def convert_csv_to_dict(args):
             if f != 'dataset.csv':
                 continue
             print('Now converting', d + '/' + f)
-            raw_data = list(csv.DictReader(open(osp.join(d, f)), delimiter=';'))
+            raw_data = list(csv.DictReader(open(osp.join(d, f))))
             curr_domain = d.split('/')[-2]
             if last_domain != curr_domain and last_domain is not None:
                 domain = {'domain': last_domain, 'websites': websites}
@@ -53,12 +53,9 @@ def convert_csv_to_dict(args):
                     website = {'qas': qas, 'page_id': last['id'][2:-5]}
                     websites.append(website)
                     qas = []
-                if 'answer' in current:
-                    answer = {'text'        : current['answer'],
-                              'element_id'  : int(current['element_id']),
-                              'answer_start': int(current['answer_start'])}
-                else:
-                    answer = {}
+                answer = {'text'        : current['answer'],
+                          'element_id'  : int(current['element_id']),
+                          'answer_start': int(current['answer_start'])}
                 answers.append(answer)
                 last = current
 
